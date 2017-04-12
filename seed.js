@@ -1,7 +1,8 @@
 // This file allows us to seed our application with data
 // simply run: `node seed.js` from the root of this project folder.
 
-var db = require('./models');
+var db = require('./models'); 
+// pulls in the models directory
 
 var books_list = [
   {
@@ -53,7 +54,7 @@ var books_list = [
   releaseDate: "Unknown 1597"
   }
 ];
-
+//updating the DB
 // remove all records that match {} -- which means remove ALL records
 db.Book.remove({}, function(err, books){
   if(err) {
@@ -63,7 +64,9 @@ db.Book.remove({}, function(err, books){
 
     // create new records based on the array books_list
     db.Book.create(books_list, function(err, books){
-      if (err) { return console.log('err', err); }
+      if (err) { 
+        return console.log('err', err); 
+      }
       console.log("created", books.length, "books");
       process.exit();
     });
