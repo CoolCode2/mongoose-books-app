@@ -1,5 +1,5 @@
-var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var BookSchema = new Schema({
   title: String,
@@ -11,3 +11,4 @@ var BookSchema = new Schema({
 var Book = mongoose.model('Book', BookSchema);
 
 module.exports = Book;
+//allows other files to have access to this one

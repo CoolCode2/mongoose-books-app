@@ -28,7 +28,7 @@ app.get('/api/books', function (req, res) {
     res.json(books);
   });
 });
-
+/*
 // get one book
 app.get('/api/books/:id', function (req, res) {
   // find one book by its id
@@ -36,6 +36,19 @@ app.get('/api/books/:id', function (req, res) {
     if (err) { return console.log("show error: " + err); }
     res.json(book);
   });
+});
+*/
+////      FIXED get one book      /////////////
+
+app.get('/api/books/:id', function (req, res) {
+  // find one book by its id
+  console.log('books show', req.params);
+  for(var i=0; i < books.length; i++) {
+    if (books[i]._id === req.params.id) {
+      res.json(books[i]);
+      break; // we found the right book, we can stop searching
+    }
+  }
 });
 
 // create new book
@@ -54,7 +67,7 @@ app.post('/api/books', function (req, res) {
 // delete book
 app.delete('/api/books/:id', function (req, res) {
   // get book id from url params (`req.params`)
-  console.log(req.params)
+  console.log(req.params);
   var bookId = req.params.id;
 
   db.Book.findOneAndRemove({ _id: bookId }, function (err, deletedBook) {
