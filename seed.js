@@ -89,6 +89,9 @@ var authors_list = [
   }
 ];
 
+
+//.populate is a mongoose command... find the author by id and populate it into the book
+
 db.Author.remove({}, function(err, authors) {
   console.log('removed all authors');
   db.Author.create(authors_list, function(err, authors){

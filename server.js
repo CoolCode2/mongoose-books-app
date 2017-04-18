@@ -60,7 +60,9 @@ app.post('/api/books', function (req, res) {
     image: req.body.image,
     releaseDate: req.body.releaseDate,
   });
-  // find the author from req.body
+ 
+  // find the author from req.body in the db, ONCE we find it, THEN we run the function
+ //the response from mongo is the author
   db.Author.findOne({name: req.body.author}, function(err, author){
     if (err) {
       return console.log(err);
